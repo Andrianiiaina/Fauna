@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'models/database_manager.dart';
 
 void main() {
   runApp(const MyApp());
@@ -6,12 +7,10 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Fauna-scan',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.green,
@@ -29,13 +28,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late DatabaseManager handler;
+  @override
+  void initState() {
+    super.initState();
+    //initialisation SQFLITE
+    handler = DatabaseManager();
+    handler.initializeDB().whenComplete(() async {
+      //await
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Fauna-scan"),
       ),
-      body: const Text("Let's code jude!!!"),
+      body: Text("Let's code juda"),
     );
   }
 }
