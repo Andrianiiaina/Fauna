@@ -51,7 +51,7 @@ class DatabaseManager {
     return result;
   }
 
-  Future<List<Famille>> getAllFamilles() async {
+/*   Future<List<Famille>> getAllFamilles() async {
     final Database db = await initializeDB();
     final List<Map<String, Object?>> queryResult = await db.query('famille');
     return queryResult.map((e) => Famille.fromMap(e)).toList();
@@ -61,5 +61,5 @@ class DatabaseManager {
     final Database db = await initializeDB();
     final List<Map<String, Object?>> queryResult = await db.query('animal');
     return queryResult.map((e) => Animal.fromMap(e)).toList();
-  }
+  }*/
 }
