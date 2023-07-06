@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'models/database_manager.dart';
 import 'animals/animal_page.dart';
-import 'widgets/floattingButton.dart';
+import 'widgets/floatting_button.dart';
+import 'parameters/parameter.dart';
+import 'routers.dart';
+import 'animals/new_animal.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,13 +16,12 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Fauna-scan',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      home: const MyHomePage(),
+      theme: ThemeData(primarySwatch: Colors.green),
+      routerDelegate: routes.routerDelegate,
+      routeInformationParser: routes.routeInformationParser,
     );
   }
 }
@@ -37,41 +39,19 @@ class _MyHomePageState extends State<MyHomePage> {
   final screens = [
     const AnimalPage(),
     const AnimalPage(),
-    const AnimalPage(),
-    const AnimalPage(),
+    AddEspeceScreen(),
+    const ParameterScreen(),
   ];
-  void _onTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    //initialisation SQFLITE
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 12),
-            child: Icon(Icons.person),
-          )
-        ],
-        title: const Icon(Icons.menu),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
-      ),
-      body: screens[_selectedIndex], //screens[_selectedIndex],
+      body: screens[_selectedIndex],
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButton: floattingButton(),
       bottomNavigationBar: _customBottomNav(context),
+      resizeToAvoidBottomInset: false,
     );
   }
 
@@ -92,36 +72,36 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Row(
             children: [
-              IconButton(
-                  onPressed: () {
-                    _onTapped(0);
-                  },
-                  icon: const Icon(Icons.home)),
+              _changeScreen(0, Icons.home),
               SizedBox(width: MediaQuery.of(context).size.width * 0.10),
-              IconButton(
-                  onPressed: () {
-                    _onTapped(1);
-                  },
-                  icon: const Icon(Icons.photo_album)),
+              _changeScreen(1, Icons.photo_album)
             ],
           ),
           Row(
             children: [
-              IconButton(
-                  onPressed: () {
-                    _onTapped(2);
-                  },
-                  icon: const Icon(Icons.person)),
+              _changeScreen(2, Icons.person),
               SizedBox(width: MediaQuery.of(context).size.width * 0.10),
-              IconButton(
-                  onPressed: () {
-                    _onTapped(3);
-                  },
-                  icon: const Icon(Icons.settings)),
+              _changeScreen(3, Icons.settings)
             ],
           ),
         ],
       ),
     );
+  }
+
+  Widget _changeScreen(int index, IconData icon) {
+    return IconButton(
+        onPressed: () {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        icon: Icon(
+          icon,
+          color: index == _selectedIndex
+              ? Colors.black
+              : Color.fromARGB(255, 96, 93, 93),
+          size: index == _selectedIndex ? 27 : 25,
+        ));
   }
 }

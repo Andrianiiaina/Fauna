@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 Widget searchField() {
   return TextFormField(
-    readOnly: true,
+    //readOnly: true,
     decoration: const InputDecoration(
       isDense: true,
       filled: true,
@@ -13,10 +14,11 @@ Widget searchField() {
           borderRadius: BorderRadius.all(Radius.circular(15))),
       prefixIcon: Icon(Icons.search),
     ),
+    //onChanged: (q) {}
   );
 }
 
-Widget searchRow() {
+Widget searchRow(BuildContext context) {
   return Row(
     children: [
       Expanded(flex: 5, child: searchField()),
@@ -28,7 +30,9 @@ Widget searchRow() {
       ),
       Expanded(
         child: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            context.go('/add_espece');
+          },
           icon: const Icon(Icons.add),
         ),
       ),

@@ -93,7 +93,8 @@ class _ShowAnimalState extends State<ShowAnimal> {
                                     children: [
                                       _tableRow(
                                           'Classe',
-                                          Classe.classes[widget.id].nomCls,
+                                          Classe
+                                              .classes[animal['classe']].nomCls,
                                           Icons.face),
                                       _tableRow('Famille', animal['famille'],
                                           Icons.family_restroom),

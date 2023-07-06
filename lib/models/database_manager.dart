@@ -5,7 +5,7 @@ import 'espece.dart';
 import 'genre.dart';
 
 class DatabaseManager {
-  final pathDB = 'dataa.db';
+  final pathDB = 'aze.db';
   initializeDB() async {
     return openDatabase(pathDB, version: 1,
         onCreate: (database, version) async {
@@ -44,14 +44,14 @@ class DatabaseManager {
   Future<Map<String, dynamic>?> fetchAnimal(int id) async {
     final Database db = await openDatabase(pathDB);
     List<Map<String, Object?>> maps = await db.rawQuery(
-        '''SELECT animal.nom, animal.regime, animal.zones, animal.image,
+        '''SELECT animal.nom, animal.regime, animal.zones, animal.image,animal.classe,
         genre.nomGenre as genre, 
         famille.nomFam as famille,
         espece.nomEsp as espece, espece.descriptionEsp as descriptionEsp
         FROM animal 
-        INNER JOIN genre ON genre.idGenre=animal.id
-        INNER JOIN famille ON famille.idFam=animal.id
-        INNER JOIN espece ON espece.idEsp=animal.id
+        INNER JOIN genre ON genre.idGenre=animal.genre
+        INNER JOIN famille ON famille.idFam=animal.famille
+        INNER JOIN espece ON espece.idEsp=animal.espece
         WHERE id = $id
         ''');
     db.close();
@@ -61,7 +61,7 @@ class DatabaseManager {
   Future<List<Animal>> getAllAnimals() async {
     final Database db = await openDatabase(pathDB);
     final List<Map<String, Object?>> queryResult = await db.query('animal');
-    db.close();
+
     return queryResult.map((e) => Animal.fromMap(e)).toList();
   }
 }

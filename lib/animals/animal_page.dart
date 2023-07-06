@@ -30,48 +30,62 @@ class _AnimalPageState extends State<AnimalPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const ListTile(
-              textColor: Color.fromARGB(195, 59, 29, 7),
-              title: Text('LES FAMEUX FAUNES', style: TextStyle(fontSize: 22)),
-              subtitle: Text("DE MADAGASCAR",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  )),
-            ),
-            const SizedBox(height: 10),
-            searchRow(),
-            const SizedBox(height: 10),
-            TabBar(
-              labelColor: Colors.green,
-              unselectedLabelColor: Colors.black,
-              isScrollable: true,
-              controller: _tabController,
-              physics: const BouncingScrollPhysics(),
-              tabs: const [
-                Tab(child: Text('Mammifère')),
-                Tab(child: Text('Insectes')),
-                Tab(child: Text('Oiseaux')),
-                Tab(child: Text('Réptiles')),
-              ],
-            ),
-            const SizedBox(height: 10),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.5,
-              child: TabBarView(controller: _tabController, children: [
-                _listEspece(1),
-                _listEspece(1),
-                _listEspece(2),
-                _listEspece(4),
-              ]),
-            ),
-          ],
+    return Scaffold(
+      appBar: AppBar(
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 12),
+            child: Icon(Icons.person),
+          )
+        ],
+        title: const Icon(Icons.menu),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 0,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const ListTile(
+                title:
+                    Text('LES FAMEUX FAUNES', style: TextStyle(fontSize: 22)),
+                subtitle: Text("DE MADAGASCAR",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    )),
+              ),
+              const SizedBox(height: 10),
+              searchRow(context),
+              const SizedBox(height: 10),
+              TabBar(
+                labelColor: Colors.green,
+                unselectedLabelColor: Colors.black,
+                isScrollable: true,
+                controller: _tabController,
+                physics: const BouncingScrollPhysics(),
+                tabs: const [
+                  Tab(child: Text('Mammifère')),
+                  Tab(child: Text('Insectes')),
+                  Tab(child: Text('Oiseaux')),
+                  Tab(child: Text('Réptiles')),
+                ],
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.6,
+                child: TabBarView(controller: _tabController, children: [
+                  _listEspece(1),
+                  _listEspece(1),
+                  _listEspece(2),
+                  _listEspece(4),
+                ]),
+              ),
+            ],
+          ),
         ),
       ),
     );
