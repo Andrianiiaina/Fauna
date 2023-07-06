@@ -16,4 +16,10 @@ class Espece {
       'descriptionEsp': descriptionEsp,
     };
   }
+
+  static List<Espece> especes = [
+    Espece(nomEsp: 'Lupus', descriptionEsp: "descriptionEsp"),
+    Espece(nomEsp: 'Canis', descriptionEsp: "descriptionEsp"),
+    Espece(nomEsp: 'Homo', descriptionEsp: "descriptionEsp"),
+  ];
 }

@@ -18,8 +18,8 @@ class Famille {
   }
 
   static List<Famille> listOfFamilles = [
-    Famille(nomFam: "aa", descriptionFam: "descriptionFama"),
-    Famille(nomFam: "ba", descriptionFam: "descriptionFamb"),
+    Famille(nomFam: "Felidae", descriptionFam: "descriptionFama"),
+    Famille(nomFam: "Nymphalidae", descriptionFam: "descriptionFamb"),
     Famille(nomFam: "ca", descriptionFam: "descriptionFamc"),
     Famille(nomFam: "da", descriptionFam: "descriptionFamd"),
   ];

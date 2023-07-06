@@ -16,4 +16,27 @@ class Classe {
       'descriptionCls': descriptionCls,
     };
   }
+
+  static List<Classe> classes = [
+    Classe(
+        idCls: 0,
+        nomCls: 'Insectes',
+        descriptionCls: "Queleques description à foutre"),
+    Classe(
+        idCls: 1,
+        nomCls: 'Reptiles',
+        descriptionCls: "Queleques description à foutre"),
+    Classe(
+        idCls: 2,
+        nomCls: 'Oiseaux',
+        descriptionCls: "Queleques description à foutre"),
+    Classe(
+        idCls: 3,
+        nomCls: 'Mammiferes',
+        descriptionCls: "Queleques description à foutre"),
+    Classe(
+        idCls: 4,
+        nomCls: 'Amphibiens',
+        descriptionCls: "Queleques description à foutre")
+  ];
 }

@@ -6,10 +6,11 @@ class Animal {
   String zones;
   String image;
   int espece;
+  int classe;
   int caracteristique;
   int famille;
   int texture;
-  int classe;
+  int genre;
   Animal({
     this.id,
     required this.nom,
@@ -17,9 +18,10 @@ class Animal {
     required this.estVertebre,
     required this.zones,
     required this.image,
+    required this.classe,
     required this.caracteristique,
     required this.famille,
-    required this.classe,
+    required this.genre,
     required this.espece,
     required this.texture,
   });
@@ -34,6 +36,7 @@ class Animal {
         caracteristique = res["caracteristique"],
         famille = res["famille"],
         classe = res["classe"],
+        genre = res["genre"],
         espece = res["espece"],
         texture = res["texture"];
 
@@ -48,6 +51,7 @@ class Animal {
       'caracteristique': caracteristique,
       'famille': famille,
       'classe': classe,
+      'genre': genre,
       'espece': espece,
       'texture': texture,
     };
@@ -55,8 +59,8 @@ class Animal {
 
   static List<Animal> listOfAnimals = [
     Animal(
-        id: 2,
-        nom: "Fosa",
+        // id: 2,
+        nom: "Fossa Dia",
         regime: "Carnivore",
         zones: "Manakara",
         estVertebre: true,
@@ -64,10 +68,11 @@ class Animal {
         caracteristique: 1,
         famille: 1,
         classe: 1,
+        genre: 1,
         espece: 1,
         texture: 1),
     Animal(
-        id: 0,
+        // id: 4,
         nom: "Tanalahy",
         regime: "herbivore",
         zones: "Antalaha, vohemar",
@@ -75,23 +80,25 @@ class Animal {
         image: "assets/insectes/urani.jpg",
         caracteristique: 1,
         famille: 1,
-        classe: 2,
+        classe: 1,
+        genre: 2,
         espece: 2,
         texture: 2),
     Animal(
-        id: 1,
-        nom: "Fosa",
+        // id: 1,
+        nom: "Fossa Dia",
         regime: "Carnivore",
         zones: "Manakara",
         estVertebre: true,
         image: "assets/insectes/scarabe.jpg",
         caracteristique: 1,
-        famille: 1,
         classe: 1,
+        famille: 1,
+        genre: 1,
         espece: 1,
         texture: 1),
     Animal(
-        id: 3,
+        //id: 3,
         nom: "Tanalahy",
         regime: "herbivore",
         zones: "Antalaha, vohemar",
@@ -99,12 +106,13 @@ class Animal {
         image: "assets/insectes/urani.jpg",
         caracteristique: 1,
         famille: 1,
-        classe: 2,
+        classe: 1,
+        genre: 2,
         espece: 2,
         texture: 2),
     Animal(
-        id: 5,
-        nom: "Fosa",
+        //  id: 6,
+        nom: "Fossa Dia",
         regime: "Carnivore",
         zones: "Manakara",
         estVertebre: true,
@@ -112,18 +120,46 @@ class Animal {
         caracteristique: 1,
         famille: 1,
         classe: 1,
+        genre: 1,
         espece: 1,
         texture: 1),
     Animal(
-        id: 6,
+        // id: 7,
         nom: "Tanalahy",
         regime: "herbivore",
         zones: "Antalaha, vohemar",
         estVertebre: true,
         image: "assets/insectes/urani.jpg",
         caracteristique: 1,
+        classe: 1,
         famille: 1,
-        classe: 2,
+        genre: 2,
+        espece: 2,
+        texture: 2),
+    Animal(
+        // id: 5,
+        nom: "Fossa Dia",
+        regime: "Carnivore",
+        zones: "Manakara",
+        estVertebre: true,
+        image: "assets/insectes/scarabe.jpg",
+        caracteristique: 1,
+        classe: 1,
+        famille: 1,
+        genre: 1,
+        espece: 1,
+        texture: 1),
+    Animal(
+        //id: 8,
+        nom: "Tanalahy",
+        regime: "herbivore",
+        zones: "Antalaha, vohemar",
+        estVertebre: true,
+        image: "assets/insectes/urani.jpg",
+        caracteristique: 1,
+        classe: 1,
+        famille: 1,
+        genre: 2,
         espece: 2,
         texture: 2),
   ];

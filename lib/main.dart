@@ -1,9 +1,11 @@
-//import 'package:fauna_scan/animals/show_animal.dart';
 import 'package:flutter/material.dart';
 import 'models/database_manager.dart';
 import 'animals/animal_page.dart';
+import 'widgets/floattingButton.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  DatabaseManager().initializeDB();
   runApp(const MyApp());
 }
 
@@ -48,19 +50,27 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     //initialisation SQFLITE
-    //  handler = DatabaseManager();
-    // handler.initializeDB().whenComplete(() async {
-    //await
-    //   setState(() {});
-    // });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[_selectedIndex],
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: _floatingButton(),
+      appBar: AppBar(
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 12),
+            child: Icon(Icons.person),
+          )
+        ],
+        title: const Icon(Icons.menu),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 0,
+      ),
+      body: screens[_selectedIndex], //screens[_selectedIndex],
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: floattingButton(),
       bottomNavigationBar: _customBottomNav(context),
     );
   }
@@ -114,17 +124,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-}
-
-Widget _floatingButton() {
-  return FloatingActionButton(
-    elevation: 0,
-    backgroundColor: const Color.fromARGB(255, 58, 149, 73),
-    onPressed: () {},
-    child: const Icon(Icons.qr_code, color: Colors.black),
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(50),
-        side: const BorderSide(
-            width: 5.0, color: Colors.white, style: BorderStyle.solid)),
-  );
 }
