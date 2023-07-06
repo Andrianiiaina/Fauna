@@ -1,6 +1,7 @@
 import 'package:fauna_scan/models/classe.dart';
 import 'package:flutter/material.dart';
 import '../models/database_manager.dart';
+import 'animal_list.dart';
 
 class ShowAnimal extends StatefulWidget {
   final int id;
@@ -27,7 +28,7 @@ class _ShowAnimalState extends State<ShowAnimal> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CircularProgressIndicator();
           } else if (snapshot.hasError) {
-            return const Text('Un probleme');
+            return const Text('Aucun animal correspondant');
           } else {
             final Map<String, dynamic>? animal = snapshot.data;
             if (animal != null) {
@@ -51,7 +52,8 @@ class _ShowAnimalState extends State<ShowAnimal> {
                             Container(
                               width: MediaQuery.of(context).size.width,
                               height: MediaQuery.of(context).size.height,
-                              padding: const EdgeInsets.all(40),
+                              padding: const EdgeInsets.only(
+                                  top: 40, left: 40, right: 20),
                               decoration: const BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(50)),
@@ -64,16 +66,13 @@ class _ShowAnimalState extends State<ShowAnimal> {
                                     title: Text(
                                       animal['nom'],
                                       style: const TextStyle(
-                                          color:
-                                              Color.fromRGBO(34, 139, 34, 1.0),
-                                          fontSize: 26),
+                                          color: Colors.green, fontSize: 28),
                                     ),
-                                    //Color.fromRGBO(34, 139, 34, 1.0),
+                                    //Colors.green,
                                     subtitle: Text(
                                       "${animal['genre']} ${animal['espece']}",
                                       style: const TextStyle(
-                                          color:
-                                              Color.fromRGBO(34, 139, 34, 1.0),
+                                          color: Colors.green,
                                           fontSize: 26,
                                           fontStyle: FontStyle.italic),
                                     ),
@@ -81,29 +80,46 @@ class _ShowAnimalState extends State<ShowAnimal> {
                                   const SizedBox(height: 10),
                                   const Text(
                                     "Lorem ipsum don't know sum don't know la suite sum don't know la suite sum don't know la suite sum don't know la suitela suite  ipsum don't know la suite  ipsum don't know la suite  ipsum don't know la suite, des cript dfges cri  escri ption de Lorem ipsum don't know la suite, ce fouc, des cript dfgescri  escription de ce fouc, des cript dfgescri description de ce fouc, des cript dfgescri ption de ce lorem upsom",
-                                    maxLines: 7,
+                                    maxLines: 8,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         color: Colors.grey,
                                         fontFamily: "Roboto",
                                         fontSize: 16),
                                   ),
-                                  const SizedBox(height: 20),
+                                  const SizedBox(height: 10),
                                   Table(
                                     children: [
-                                      _tableRow(
-                                          'Classe',
-                                          Classe
-                                              .classes[animal['classe']].nomCls,
-                                          Icons.face),
-                                      _tableRow('Famille', animal['famille'],
-                                          Icons.family_restroom),
                                       _tableRow('Alimentation',
                                           animal['regime'], Icons.food_bank),
                                       _tableRow('Habitat', animal['zones'],
                                           Icons.home_filled),
                                     ],
-                                  )
+                                  ),
+                                  SizedBox(height: 20),
+                                  Row(children: [
+                                    Expanded(
+                                      child: OutlinedButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: ((context) =>
+                                                      ListAnimal(
+                                                          classe: animal[
+                                                              'classe']))));
+                                        },
+                                        child: Text(
+                                            "#${Classe.classes[animal['classe']].nomCls}"),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: OutlinedButton(
+                                        onPressed: () {},
+                                        child: Text("#${animal['famille']}"),
+                                      ),
+                                    ),
+                                  ])
                                 ],
                               ),
                             ),

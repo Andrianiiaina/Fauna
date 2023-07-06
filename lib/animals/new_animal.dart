@@ -23,13 +23,12 @@ class _AddEspeceScreenState extends State<AddEspeceScreen> {
   List<DropdownMenuItem<String>> familleDrop = [];
   List<DropdownMenuItem<String>> genreDrop = [];
 
-  String _imageFile = "";
+  String imageFile = "";
   String currentImage = "";
   final ImagePicker _picker = ImagePicker();
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     _getSelectValue();
@@ -75,8 +74,7 @@ class _AddEspeceScreenState extends State<AddEspeceScreen> {
                     child: TextFormField(
                       decoration: const InputDecoration(
                           labelText: "Nom de l'animal",
-                          hintText: "Entrer le nom",
-                          border: const OutlineInputBorder()),
+                          border: OutlineInputBorder()),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return "Vous devez remplir ce champs";
@@ -117,69 +115,52 @@ class _AddEspeceScreenState extends State<AddEspeceScreen> {
                   isVerteberRadio(),
                   Container(
                     margin: const EdgeInsets.only(top: 10, bottom: 10),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Espèce",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey[700],
-                            ),
-                          ),
-                          DropdownButtonFormField(
-                            items: especeDrop,
-                            onChanged: (value) {},
-                          ),
-                        ]),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 10, bottom: 10),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "famille",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey[700],
-                          ),
+                    child: DropdownButtonFormField(
+                      decoration: InputDecoration(
+                        hintText: "Espèce",
+                        hintStyle: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey[700],
                         ),
-                        DropdownButtonFormField(
-                          items: familleDrop,
-                          onChanged: (value) {},
-                        ),
-                      ],
+                      ),
+                      items: especeDrop,
+                      onChanged: (value) {},
                     ),
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 10, bottom: 10),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Genre",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey[700],
-                          ),
+                    child: DropdownButtonFormField(
+                      decoration: InputDecoration(
+                        hintText: "Famille",
+                        hintStyle: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey[700],
                         ),
-                        DropdownButtonFormField(
-                          items: genreDrop,
-                          onChanged: (value) {},
-                        )
-                      ],
+                      ),
+                      items: familleDrop,
+                      onChanged: (value) {},
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 10, bottom: 10),
+                    child: DropdownButtonFormField(
+                      decoration: InputDecoration(
+                        hintText: "Genre",
+                        hintStyle: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey[700],
+                        ),
+                      ),
+                      items: genreDrop,
+                      onChanged: (value) {},
                     ),
                   ),
                   SizedBox(
                     child: ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            final name = nameController.text;
-                            final description = regimeController.text;
+                            // final name = nameController.text;
+                            //final description = regimeController.text;
                             // ScaffoldMessenger().of(context).showSnackBar(
                             // 	const SnackBar(content: Text("Envoi en cours..."));
                             // );
@@ -279,7 +260,7 @@ class _AddEspeceScreenState extends State<AddEspeceScreen> {
 
       setState(() {
         currentImage = pickedFile.path;
-        _imageFile = newImagePath;
+        imageFile = newImagePath;
       });
     }
   }

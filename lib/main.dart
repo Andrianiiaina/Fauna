@@ -99,8 +99,8 @@ class _MyHomePageState extends State<MyHomePage> {
         icon: Icon(
           icon,
           color: index == _selectedIndex
-              ? Colors.black
-              : Color.fromARGB(255, 96, 93, 93),
+              ? const Color.fromARGB(199, 0, 0, 0)
+              : const Color.fromARGB(255, 96, 93, 93),
           size: index == _selectedIndex ? 27 : 25,
         ));
   }

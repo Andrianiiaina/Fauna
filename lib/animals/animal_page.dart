@@ -76,7 +76,7 @@ class _AnimalPageState extends State<AnimalPage> with TickerProviderStateMixin {
               ),
               const SizedBox(height: 10),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.6,
+                height: MediaQuery.of(context).size.height * 0.54,
                 child: TabBarView(controller: _tabController, children: [
                   _listEspece(1),
                   _listEspece(1),
@@ -107,17 +107,17 @@ class _AnimalPageState extends State<AnimalPage> with TickerProviderStateMixin {
           //un voir plus à modifier si misy best way
           if (index == extraitClasses.length) {
             return TextButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: ((context) =>
-                              ListAnimal(classe: idClasse))));
-                },
-                child: const Text(
-                  'voir plus...',
-                  style: TextStyle(color: Colors.grey),
-                ));
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => ListAnimal(classe: idClasse))));
+              },
+              child: const Text(
+                'voir plus...',
+                style: TextStyle(color: Colors.grey),
+              ),
+            );
           }
           return CardAnimal(animal: extraitClasses[index]);
         });
