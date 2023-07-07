@@ -11,6 +11,9 @@ class ParameterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.green,
+        elevation: 1,
         title: Row(
           children: [
             Container(

@@ -60,6 +60,9 @@ class _AddEspeceScreenState extends State<AddEspeceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 1,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.green,
         title: const Text("Envoie espece"),
       ),
       body: ListView(children: [
@@ -194,7 +197,7 @@ class _AddEspeceScreenState extends State<AddEspeceScreen> {
           tooltip: 'profil_author',
           child: const Icon(
             Icons.photo,
-            color: Colors.blue,
+            color: Colors.green,
           ),
           backgroundColor: Colors.white,
         ),

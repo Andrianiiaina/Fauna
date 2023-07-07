@@ -18,9 +18,29 @@ class Famille {
   }
 
   static List<Famille> listOfFamilles = [
-    Famille(nomFam: "Felidae", descriptionFam: "descriptionFama"),
-    Famille(nomFam: "Nymphalidae", descriptionFam: "descriptionFamb"),
-    Famille(nomFam: "ca", descriptionFam: "descriptionFamc"),
-    Famille(nomFam: "da", descriptionFam: "descriptionFamd"),
+    Famille(
+        nomFam: "Chamaeleonidae",
+        descriptionFam: "Caméléon panthère, Caméléon nain, Caméléon de Parson"),
+    Famille(nomFam: "Crocodylidae", descriptionFam: "Crocodile du Nil"),
+    Famille(
+        nomFam: "Gekkonidae",
+        descriptionFam: "Geckos à queue plate, Gecko diurne à queue plate"),
+    Famille(nomFam: "Gerrhosauridae", descriptionFam: "Serpent-lézard"),
+    Famille(nomFam: "Testudinidae", descriptionFam: "Tortue radiée"),
+    Famille(nomFam: "Boidae", descriptionFam: "Boa de Madagascar"),
+    Famille(
+        nomFam: "Lamprophiidae", descriptionFam: "Serpent à tête de vipère"),
+    //oiseaux
+    Famille(nomFam: "Mesitornithidae", descriptionFam: "Mesites"),
+    Famille(nomFam: "Cisticolidae", descriptionFam: "Cisticolidés"),
+    Famille(nomFam: "Cuculidae", descriptionFam: "Couas"),
+    Famille(nomFam: "Accipitridae", descriptionFam: "Accipitridés"),
+    Famille(nomFam: "Tytonidae", descriptionFam: "Effraies"),
+    Famille(nomFam: "Columbidae", descriptionFam: "Pigeons"),
+    //insectes
+    Famille(nomFam: "Papilionidae", descriptionFam: "Papilionidés"),
+    Famille(nomFam: "Curculionidae", descriptionFam: "Charançons"),
+    Famille(nomFam: "Mantidae", descriptionFam: "Mantes"),
+    Famille(nomFam: "Saturniidae", descriptionFam: "Saturniidés")
   ];
 }
