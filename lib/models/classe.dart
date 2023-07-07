@@ -19,16 +19,16 @@ class Classe {
 
   static List<Classe> classes = [
     Classe(
-        idCls: 1,
-        nomCls: 'Insectes',
+        idCls: 2,
+        nomCls: 'Oiseaux',
         descriptionCls: "Queleques description à foutre"),
     Classe(
-        idCls: 3,
+        idCls: 1,
         nomCls: 'Reptiles',
         descriptionCls: "Queleques description à foutre"),
     Classe(
-        idCls: 2,
-        nomCls: 'Oiseaux',
+        idCls: 3,
+        nomCls: 'Insectes',
         descriptionCls: "Queleques description à foutre"),
     Classe(
         idCls: 0,

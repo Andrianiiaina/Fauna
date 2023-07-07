@@ -36,7 +36,7 @@ class CardAnimal extends StatelessWidget {
                 animal.nom.toUpperCase(),
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-              subtitle: Text(animal.zones),
+              //subtitle: Text(animal.zones),
             )),
       ),
     );

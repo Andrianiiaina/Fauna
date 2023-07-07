@@ -78,8 +78,8 @@ class _ShowAnimalState extends State<ShowAnimal> {
                                     ),
                                   ),
                                   const SizedBox(height: 10),
-                                  const Text(
-                                    "Lorem ipsum don't know sum don't know la suite sum don't know la suite sum don't know la suite sum don't know la suitela suite  ipsum don't know la suite  ipsum don't know la suite  ipsum don't know la suite, des cript dfges cri  escri ption de Lorem ipsum don't know la suite, ce fouc, des cript dfgescri  escription de ce fouc, des cript dfgescri description de ce fouc, des cript dfgescri ption de ce lorem upsom",
+                                  Text(
+                                    animal['descriptionEsp'],
                                     maxLines: 8,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
