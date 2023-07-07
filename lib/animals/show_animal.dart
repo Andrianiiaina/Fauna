@@ -42,7 +42,7 @@ class _ShowAnimalState extends State<ShowAnimal> {
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(animal['image']),
-                              fit: BoxFit.cover)),
+                              fit: BoxFit.fill)),
                     ),
                     Positioned(
                       top: MediaQuery.of(context).size.height * 0.48 - 50,
@@ -70,7 +70,7 @@ class _ShowAnimalState extends State<ShowAnimal> {
                                     ),
                                     //Colors.green,
                                     subtitle: Text(
-                                      "${animal['genre']} ${animal['espece']}",
+                                      "${animal['espece']}",
                                       style: const TextStyle(
                                           color: Colors.green,
                                           fontSize: 26,
@@ -87,16 +87,28 @@ class _ShowAnimalState extends State<ShowAnimal> {
                                         fontFamily: "Roboto",
                                         fontSize: 16),
                                   ),
-                                  const SizedBox(height: 10),
-                                  Table(
-                                    children: [
-                                      _tableRow('Alimentation',
-                                          animal['regime'], Icons.food_bank),
-                                      _tableRow('Habitat', animal['zones'],
-                                          Icons.home_filled),
-                                    ],
+                                  ListTile(
+                                    leading: Icon(Icons.food_bank,
+                                        color: Colors.brown),
+                                    title: Text(
+                                      animal['regime'],
+                                      style: TextStyle(
+                                          color:
+                                              Color.fromARGB(157, 54, 45, 41),
+                                          fontSize: 14),
+                                    ),
                                   ),
-                                  SizedBox(height: 20),
+                                  ListTile(
+                                    leading: Icon(Icons.home_filled,
+                                        color: Colors.brown),
+                                    title: Text(
+                                      animal['zones'],
+                                      style: TextStyle(
+                                          color:
+                                              Color.fromARGB(157, 54, 45, 41),
+                                          fontSize: 14),
+                                    ),
+                                  ),
                                   Row(children: [
                                     Expanded(
                                       child: OutlinedButton(
