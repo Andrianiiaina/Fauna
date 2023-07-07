@@ -134,7 +134,7 @@ class Animal {
         regime: "Carnivore",
         zones: "Présent dans les forêts humides du nord-est de Madagascar",
         estVertebre: true,
-        image: "assets/reptiles/cameleon_parson.jpg",
+        image: "assets/reptiles/cameleon_nain.jpg",
         classe: 1,
         famille: 0,
         genre: 7,

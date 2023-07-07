@@ -5,7 +5,7 @@ import 'espece.dart';
 import 'genre.dart';
 
 class DatabaseManager {
-  final pathDB = 'gre.db';
+  final pathDB = 'popo.db';
   initializeDB() async {
     return openDatabase(pathDB, version: 1,
         onCreate: (database, version) async {
