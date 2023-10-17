@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: screens[_selectedIndex],
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
-      floatingActionButton: floattingButton(),
+      floatingActionButton: scani(),
       bottomNavigationBar: _customBottomNav(context),
       resizeToAvoidBottomInset: false,
     );

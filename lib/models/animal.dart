@@ -60,7 +60,7 @@ class Animal {
   static List<Animal> listOfAnimals = [
     Animal(
         nom: "Caméléon panthère",
-        regime: "Carnivore",
+        regime: "aye",
         zones: "Présent dans tout Madagascar",
         estVertebre: true,
         image: "assets/reptiles/cameleon_panthere.jpg",
@@ -69,7 +69,7 @@ class Animal {
         genre: 1,
         espece: 1),
     Animal(
-        nom: "Caméléon nain",
+        nom: "black lemur",
         regime: "Carnivore",
         zones: "Principalement dans les forêts de l'est de Madagascar",
         estVertebre: true,
@@ -79,7 +79,7 @@ class Animal {
         genre: 2,
         espece: 2),
     Animal(
-        nom: "Crocodile du Nil",
+        nom: "coquerel",
         regime: "Carnivore",
         zones:
             "Présent dans certaines régions côtières et fluviales de Madagascar",
@@ -90,7 +90,7 @@ class Animal {
         genre: 3,
         espece: 3),
     Animal(
-        nom: "Geckos à queue plate",
+        nom: "propithecus coronatus",
         regime: "Carnivore",
         zones: "Répartis dans différentes régions de Madagascar",
         estVertebre: true,

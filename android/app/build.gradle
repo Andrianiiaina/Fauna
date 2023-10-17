@@ -49,7 +49,10 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
-
+    aaptOptions {
+        noCompress 'tflite'
+        noCompress 'lite'
+    }
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
