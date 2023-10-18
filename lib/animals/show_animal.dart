@@ -33,7 +33,7 @@ class _ShowAnimalState extends State<ShowAnimal> {
           final Map<String, dynamic>? animal = snapshot.data;
 
           if (animal != null) {
-            return Container(
+            return SizedBox(
               height: MediaQuery.of(context).size.height,
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
@@ -102,7 +102,7 @@ class _ShowAnimalState extends State<ShowAnimal> {
                           //Text("à ${widget.percentage} %"),
                           const Text('Le saviez-vous?'),
                           Text(
-                            animal['descriptionEsp'],
+                            animal['info'],
                             style: const TextStyle(
                                 color: Colors.grey,
                                 fontFamily: "Roboto",
@@ -111,19 +111,13 @@ class _ShowAnimalState extends State<ShowAnimal> {
                           const SizedBox(height: 10),
                           const Text('Description'),
                           Text(
-                            animal['descriptionEsp'],
+                            animal['description'],
                             style: const TextStyle(
                                 color: Colors.grey,
                                 fontFamily: "Roboto",
                                 fontSize: 16),
                           ),
-                          Text(
-                            animal['descriptionEsp'],
-                            style: const TextStyle(
-                                color: Colors.grey,
-                                fontFamily: "Roboto",
-                                fontSize: 16),
-                          ),
+
                           ListTile(
                             leading: const Icon(Icons.food_bank,
                                 color: Colors.brown),
@@ -154,7 +148,7 @@ class _ShowAnimalState extends State<ShowAnimal> {
                                   fontSize: 14),
                             ),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           /**
                          *   Text('Image similaire:'),
                           Image(

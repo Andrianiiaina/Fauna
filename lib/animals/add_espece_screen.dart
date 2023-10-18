@@ -82,7 +82,7 @@ class _AddEspeceScreenState extends State<AddEspeceScreen> {
                     margin: const EdgeInsets.only(bottom: 10),
                     child: TextFormField(
                       decoration: const InputDecoration(
-                          labelText: "Nom de l'animal",
+                          labelText: "Localisation",
                           border: OutlineInputBorder()),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -175,8 +175,13 @@ class _AddEspeceScreenState extends State<AddEspeceScreen> {
                             // );
                             FocusScope.of(context).requestFocus(FocusNode());
                           }
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text('Merci pour votre retour.'),
+                            duration: Duration(seconds: 3),
+                          ));
                         },
-                        child: const Text("Ajouter")),
+                        child: const Text("Envoyer")),
                     width: double.infinity,
                     height: 50,
                   )
@@ -200,7 +205,7 @@ class _AddEspeceScreenState extends State<AddEspeceScreen> {
             _pickPhoto(ImageSource.gallery);
           },
           heroTag: 'image0',
-          tooltip: 'profil_author',
+          tooltip: 'profil de animal',
           child: const Icon(
             Icons.photo,
             color: Colors.green,

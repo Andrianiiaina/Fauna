@@ -36,7 +36,7 @@ class _ListAnimalState extends State<ListAnimal> {
         elevation: 1,
         foregroundColor: const Color.fromARGB(193, 0, 0, 0),
         leading: IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             onPressed: () {
               showModalBottomSheet(
                 context: context,
@@ -45,7 +45,7 @@ class _ListAnimalState extends State<ListAnimal> {
                 builder: (_) => Container(
                   height: MediaQuery.of(context).size.height,
                   alignment: Alignment.topCenter,
-                  child: SearchAnimal(),
+                  child: const SearchAnimal(),
                 ),
               );
             }),

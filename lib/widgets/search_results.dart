@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import '../models/animal.dart';
 import '../models/database_manager.dart';
 import '../animals/show_animal.dart';
 
@@ -16,10 +15,7 @@ class _SearchAnimalState extends State<SearchAnimal> {
     handler.fetchAnimals().then((value) => animals = value!
         .where((element) =>
             element['nom'].toLowerCase().contains(q.toLowerCase()) ||
-            element['espece']
-                .toString()
-                .toLowerCase()
-                .contains(q.toLowerCase()) ||
+            element['espece'].toLowerCase().contains(q.toLowerCase()) ||
             element['famille']
                 .toString()
                 .toLowerCase()
@@ -65,7 +61,7 @@ class _SearchAnimalState extends State<SearchAnimal> {
                 }
               },
             ),
-            Container(
+            SizedBox(
               height: 500,
               child: ListView.builder(
                 scrollDirection: Axis.vertical,

@@ -5,6 +5,7 @@ import '../models/database_manager.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import '../models/animal.dart';
+import 'package:go_router/go_router.dart';
 
 class ScanResultPage extends StatefulWidget {
   final int id;
@@ -29,8 +30,7 @@ class _ScanResultPageState extends State<ScanResultPage> {
     final appDir = await getApplicationDocumentsDirectory();
     final imagesDir = Directory('${appDir.path}/images');
     if (!imagesDir.existsSync()) imagesDir.createSync(recursive: true);
-    final newImagePath =
-        '${imagesDir.path}/${DateTime.now().millisecondsSinceEpoch}.jpg';
+    final newImagePath = '${imagesDir.path}/${DateTime.now().second}.jpg';
 
     if (!File(newImagePath).existsSync() && widget.currentImage.path != "") {
       await File(widget.currentImage.path).copy(newImagePath);
@@ -53,9 +53,8 @@ class _ScanResultPageState extends State<ScanResultPage> {
           return const Text('Aucun animal correspondant');
         } else {
           final Map<String, dynamic>? animal = snapshot.data;
-
           if (animal != null) {
-            return Container(
+            return SizedBox(
               height: MediaQuery.of(context).size.height,
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
@@ -124,10 +123,10 @@ class _ScanResultPageState extends State<ScanResultPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 5),
-                          Text(
-                              'Meilleure correspondance (${widget.percentage} %)'),
-                          Container(
+                          const SizedBox(height: 5),
+                          // (${widget.percentage} %)
+                          const Text('Meilleure correspondance:'),
+                          SizedBox(
                             width: 800,
                             height: 100,
                             child: ListView.builder(
@@ -137,21 +136,19 @@ class _ScanResultPageState extends State<ScanResultPage> {
                               itemBuilder: ((context, index) {
                                 final image =
                                     Animal.getLink(animal['image'])[index];
-                                return Container(
-                                  child: Image(
-                                    image: AssetImage(image),
-                                    height: 100,
-                                    width: 100,
-                                  ),
+                                return Image(
+                                  image: AssetImage(image),
+                                  height: 100,
+                                  width: 100,
                                 );
                               }),
                             ),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           //Text("à ${widget.percentage} %"),
-                          const Text('Faits interressant'),
+                          const Text('Le saviez-vous?'),
                           Text(
-                            animal['descriptionEsp'],
+                            animal['info'],
                             style: const TextStyle(
                                 color: Colors.grey,
                                 fontFamily: "Roboto",
@@ -160,14 +157,7 @@ class _ScanResultPageState extends State<ScanResultPage> {
                           const SizedBox(height: 10),
                           const Text('Description'),
                           Text(
-                            animal['descriptionEsp'],
-                            style: const TextStyle(
-                                color: Colors.grey,
-                                fontFamily: "Roboto",
-                                fontSize: 16),
-                          ),
-                          Text(
-                            animal['descriptionEsp'],
+                            animal['description'],
                             style: const TextStyle(
                                 color: Colors.grey,
                                 fontFamily: "Roboto",
@@ -194,7 +184,7 @@ class _ScanResultPageState extends State<ScanResultPage> {
                             ),
                           ),
                           ListTile(
-                            leading: const Icon(Icons.home_filled,
+                            leading: const Icon(Icons.location_on,
                                 color: Colors.brown),
                             title: Text(
                               animal['zones'],
@@ -203,7 +193,7 @@ class _ScanResultPageState extends State<ScanResultPage> {
                                   fontSize: 14),
                             ),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           /**
                          *   Text('Image similaire:'),
                           Image(
@@ -216,6 +206,12 @@ class _ScanResultPageState extends State<ScanResultPage> {
                             child: ElevatedButton(
                               onPressed: () {
                                 addToBiblio(animal['nom']);
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content:
+                                      Text('Image ajouter à la collection'),
+                                  duration: Duration(seconds: 2),
+                                ));
                               },
                               child: const Text('Ajouter à ma collection'),
                             ),
@@ -229,7 +225,22 @@ class _ScanResultPageState extends State<ScanResultPage> {
               ),
             );
           } else {
-            return const Text("Non trouvé");
+            return Container(
+              padding: const EdgeInsets.all(15),
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                      "Desolé fauna-scan pas reconnu l'animal que vous avez scanné, essayer de prendre une autre photo ou rapportez l'animal non reconnu à l'admisistrateur."),
+                  ElevatedButton(
+                      onPressed: () {
+                        context.go('/add_espece');
+                      },
+                      child: const Text('Rapporter')),
+                ],
+              ),
+            );
           }
         }
       }),

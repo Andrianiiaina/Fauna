@@ -66,7 +66,7 @@ class ParameterScreen extends StatelessWidget {
               Text(
                 name,
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 16,
                 ),
               ),
             ],

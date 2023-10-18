@@ -31,7 +31,7 @@ GoRouter routes = GoRouter(routes: [
         GoRoute(
             path: 'bibliotheque',
             builder: (BuildContext context, GoRouterState state) =>
-                BibliothequePage())
+                const BibliothequePage())
       ],
       path: '/',
       builder: (BuildContext context, GoRouterState state) =>

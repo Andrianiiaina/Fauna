@@ -5,11 +5,11 @@ class Animal {
   bool estVertebre;
   String zones;
   String image;
-  int espece;
+  String espece;
   int classe;
-  dynamic caracteristique;
+  String description;
   int famille;
-  dynamic texture;
+  String info;
   int genre;
   Animal({
     this.id,
@@ -19,14 +19,14 @@ class Animal {
     required this.zones,
     required this.image,
     required this.classe,
-    this.caracteristique,
+    required this.description,
     required this.famille,
     required this.genre,
     required this.espece,
-    this.texture,
+    required this.info,
   });
-  static getLink(String nom) {
-    String text = nom.substring(1, nom.length - 1);
+  static getLink(String imagesString) {
+    String text = imagesString.substring(1, imagesString.length - 1);
     List<String> images = text.split(',');
 
     return images;
@@ -39,12 +39,12 @@ class Animal {
         zones = res["zones"],
         estVertebre = res["estVertebre"] == 1,
         image = res["image"],
-        caracteristique = res["caracteristique"],
+        description = res["description"],
         famille = res["famille"],
         classe = res["classe"],
         genre = res["genre"],
         espece = res["espece"],
-        texture = res["texture"];
+        info = res["info"];
 
   Map<String, Object?> toMap() {
     return {
@@ -54,12 +54,12 @@ class Animal {
       'zones': zones,
       'estVertebre': estVertebre == true ? 1 : 0,
       'image': image,
-      'caracteristique': caracteristique,
+      'description': description,
       'famille': famille,
       'classe': classe,
       'genre': genre,
       'espece': espece,
-      'texture': texture,
+      'info': info,
     };
   }
 
@@ -74,7 +74,9 @@ class Animal {
         classe: 1,
         famille: 1,
         genre: 1,
-        espece: 1),
+        description: 'blabla',
+        info: 'blabla',
+        espece: ' 1'),
     Animal(
         nom: "black lemur",
         regime: "Carnivore",
@@ -84,7 +86,9 @@ class Animal {
         classe: 1,
         famille: 1,
         genre: 2,
-        espece: 2),
+        description: 'blabla',
+        info: 'blabla',
+        espece: ' 2'),
     Animal(
         nom: "coquerel",
         regime: "Carnivore",
@@ -94,8 +98,10 @@ class Animal {
         image: "[assets/reptiles/crocodile_nil.jpg]",
         classe: 1,
         famille: 2,
+        description: 'blabla',
+        info: 'blabla',
         genre: 3,
-        espece: 3),
+        espece: ' 3'),
     Animal(
         nom: "propithecus coronatus",
         regime: "Carnivore",
@@ -105,7 +111,9 @@ class Animal {
         classe: 1,
         famille: 2,
         genre: 3,
-        espece: 3),
+        description: 'blabla',
+        info: 'blabla',
+        espece: ' 3'),
     Animal(
         nom: "Serpent-lézard",
         regime: "Omnivore",
@@ -114,8 +122,10 @@ class Animal {
         image: "[assets/reptiles/serpent_tete_vipere.jpg]",
         classe: 1,
         famille: 3,
+        description: 'blabla',
+        info: 'blabla',
         genre: 4,
-        espece: 4),
+        espece: ' 4'),
     Animal(
         nom: "Tortue radiée",
         regime: "Herbivore",
@@ -125,7 +135,9 @@ class Animal {
         classe: 1,
         famille: 4,
         genre: 5,
-        espece: 5),
+        description: 'blabla',
+        info: 'blabla',
+        espece: ' 5'),
     Animal(
         nom: "Boa de Madagascar",
         regime: "Carnivore",
@@ -133,9 +145,11 @@ class Animal {
         estVertebre: true,
         image: "[assets/reptiles/boa_madagascar.jpg]",
         classe: 1,
+        description: 'blabla',
+        info: 'blabla',
         famille: 5,
         genre: 6,
-        espece: 6),
+        espece: ' 6'),
     Animal(
         nom: "Caméléon de Parson",
         regime: "Carnivore",
@@ -144,8 +158,10 @@ class Animal {
         image: "[assets/reptiles/cameleon_nain.jpg]",
         classe: 1,
         famille: 0,
+        description: 'blabla',
+        info: 'blabla',
         genre: 7,
-        espece: 7),
+        espece: ' 7'),
     Animal(
         nom: "Serpent à tête de vipère",
         regime: "Carnivore",
@@ -154,8 +170,10 @@ class Animal {
         estVertebre: true,
         image: "[assets/reptiles/boa_madagascar.jpg]",
         classe: 1,
+        description: 'blabla',
+        info: 'blabla',
         famille: 6,
         genre: 8,
-        espece: 8),
+        espece: ' 8'),
   ];
 }

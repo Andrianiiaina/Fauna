@@ -1,6 +1,7 @@
 import 'package:fauna_scan/widgets/search_results.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../models/pick_image_function.dart';
 
 Widget searchField(BuildContext context) {
   return TextFormField(
@@ -8,7 +9,7 @@ Widget searchField(BuildContext context) {
       decoration: const InputDecoration(
         isDense: true,
         filled: true,
-        hintText: "Trouver un animal",
+        hintText: "Rechercher un animal",
         hintStyle: TextStyle(fontSize: 14),
         border: OutlineInputBorder(
             borderSide: BorderSide.none,
@@ -22,7 +23,7 @@ Widget searchField(BuildContext context) {
           builder: (_) => Container(
             height: MediaQuery.of(context).size.height,
             alignment: Alignment.topCenter,
-            child: SearchAnimal(),
+            child: const SearchAnimal(),
           ),
         );
       });
@@ -34,8 +35,10 @@ Widget searchRow(BuildContext context) {
       Expanded(flex: 5, child: searchField(context)),
       Expanded(
         child: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.search),
+          onPressed: () {
+            pickImage(0, context);
+          },
+          icon: const Icon(Icons.image_search),
         ),
       ),
       Expanded(

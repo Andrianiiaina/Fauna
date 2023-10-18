@@ -20,6 +20,7 @@ class _AnimalPageState extends State<AnimalPage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+
     _tabController = TabController(length: 4, vsync: this);
     handler.getAllAnimals().then((value) {
       setState(() {

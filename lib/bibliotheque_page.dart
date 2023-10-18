@@ -76,8 +76,8 @@ class _BibliothequePageState extends State<BibliothequePage>
                                     alignment: Alignment.center,
                                     color: Colors.transparent,
                                     child: ElevatedButton(
-                                        child:
-                                            Text('Supprimer de ma collection'),
+                                        child: const Text(
+                                            'Supprimer de ma collection'),
                                         onPressed: () {
                                           deleteBiblio(animals[index].idBiblio);
                                           Navigator.pop(context);

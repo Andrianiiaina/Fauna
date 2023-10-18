@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({Key? key, required}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Row(
             children: [
-              _changeScreen(2, Icons.person),
+              _changeScreen(2, Icons.send_rounded),
               SizedBox(width: MediaQuery.of(context).size.width * 0.10),
               _changeScreen(3, Icons.settings)
             ],
