@@ -1,4 +1,5 @@
-import 'package:fauna_scan/animals/new_animal.dart';
+import 'package:fauna_scan/animals/add_espece_screen.dart';
+import 'package:fauna_scan/bibliotheque_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'parameters/parameter.dart';
@@ -26,7 +27,11 @@ GoRouter routes = GoRouter(routes: [
         GoRoute(
             path: 'add_espece',
             builder: (BuildContext context, GoRouterState state) =>
-                AddEspeceScreen())
+                AddEspeceScreen()),
+        GoRoute(
+            path: 'bibliotheque',
+            builder: (BuildContext context, GoRouterState state) =>
+                BibliothequePage())
       ],
       path: '/',
       builder: (BuildContext context, GoRouterState state) =>

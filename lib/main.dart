@@ -4,7 +4,8 @@ import 'animals/animal_page.dart';
 import 'widgets/floatting_button.dart';
 import 'parameters/parameter.dart';
 import 'routers.dart';
-import 'animals/new_animal.dart';
+import 'animals/add_espece_screen.dart';
+import 'bibliotheque_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Fauna-scan',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.green),
+      theme: ThemeData(primarySwatch: Colors.brown),
       routerDelegate: routes.routerDelegate,
       routeInformationParser: routes.routeInformationParser,
     );
@@ -38,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   final screens = [
     const AnimalPage(),
-    const AnimalPage(),
+    const BibliothequePage(),
     AddEspeceScreen(),
     const ParameterScreen(),
   ];
@@ -49,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: screens[_selectedIndex],
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
-      floatingActionButton: scani(),
+      floatingActionButton: const ScanAnimalButton(),
       bottomNavigationBar: _customBottomNav(context),
       resizeToAvoidBottomInset: false,
     );

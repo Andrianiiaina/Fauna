@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../animals/show_animal.dart';
+import '../models/animal.dart';
 
 class CardAnimal extends StatelessWidget {
   final dynamic animal;
@@ -23,7 +24,7 @@ class CardAnimal extends StatelessWidget {
           image: DecorationImage(
               colorFilter: ColorFilter.mode(
                   Colors.black.withOpacity(0.2), BlendMode.darken),
-              image: AssetImage(animal.image),
+              image: AssetImage("${Animal.getLink(animal.image)[0]}"),
               fit: BoxFit.cover),
           borderRadius: const BorderRadius.all(Radius.circular(10)),
         ),

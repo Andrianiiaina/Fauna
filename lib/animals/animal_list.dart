@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fauna_scan/models/animal.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../models/database_manager.dart';
+import '../widgets/search_results.dart';
 
 class ListAnimal extends StatefulWidget {
   final int classe;
@@ -33,9 +34,22 @@ class _ListAnimalState extends State<ListAnimal> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
-        foregroundColor: Color.fromARGB(193, 0, 0, 0),
-        leading: const Icon(Icons.search),
-        title: Text("${Classe.classes[widget.classe].nomCls}",
+        foregroundColor: const Color.fromARGB(193, 0, 0, 0),
+        leading: IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                elevation: 1,
+                builder: (_) => Container(
+                  height: MediaQuery.of(context).size.height,
+                  alignment: Alignment.topCenter,
+                  child: SearchAnimal(),
+                ),
+              );
+            }),
+        title: Text(Classe.classes[widget.classe].nomCls,
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
         actions: const [
           Padding(
@@ -80,7 +94,8 @@ class _ListAnimalState extends State<ListAnimal> {
                             ClipRRect(
                               borderRadius: BorderRadius.circular(15),
                               child: Image(
-                                image: AssetImage(animals[index].image),
+                                image: AssetImage(
+                                    Animal.getLink(animals[index].image)[0]),
                                 height: 130,
                                 fit: BoxFit.cover,
                               ),

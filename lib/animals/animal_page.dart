@@ -32,60 +32,59 @@ class _AnimalPageState extends State<AnimalPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Icon(Icons.menu),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 0,
         actions: const [
           Padding(
             padding: EdgeInsets.only(right: 12),
             child: Icon(Icons.person),
           )
         ],
-        title: const Icon(Icons.menu),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const ListTile(
-                title:
-                    Text('LES FAMEUX FAUNES', style: TextStyle(fontSize: 22)),
-                subtitle: Text("DE MADAGASCAR",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    )),
-              ),
-              const SizedBox(height: 10),
-              searchRow(context),
-              const SizedBox(height: 10),
-              TabBar(
-                labelColor: Colors.green,
-                unselectedLabelColor: Colors.black,
-                isScrollable: true,
-                controller: _tabController,
-                physics: const BouncingScrollPhysics(),
-                tabs: const [
-                  Tab(child: Text('Oiseaux')),
-                  Tab(child: Text('Réptiles')),
-                  Tab(child: Text('Insectes')),
-                  Tab(child: Text('Mammifère')),
-                ],
-              ),
-              const SizedBox(height: 10),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.54,
-                child: TabBarView(controller: _tabController, children: [
-                  _listEspece(2),
-                  _listEspece(1),
-                  _listEspece(3),
-                  _listEspece(0),
-                ]),
-              ),
-            ],
-          ),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        padding: const EdgeInsets.only(left: 15, right: 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const ListTile(
+              title:
+                  Text('LES FAUNES ENDEMIQUES', style: TextStyle(fontSize: 20)),
+              subtitle: Text("DE MADAGASCAR",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  )),
+            ),
+            const SizedBox(height: 5),
+            searchRow(context),
+            const SizedBox(height: 5),
+            TabBar(
+              labelColor: Colors.green,
+              unselectedLabelColor: Colors.black,
+              isScrollable: true,
+              controller: _tabController,
+              physics: const BouncingScrollPhysics(),
+              tabs: const [
+                Tab(child: Text('Oiseaux')),
+                Tab(child: Text('Réptiles')),
+                Tab(child: Text('Insectes')),
+                Tab(child: Text('Mammifère')),
+              ],
+            ),
+            const SizedBox(height: 10),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.54,
+              child: TabBarView(controller: _tabController, children: [
+                _listEspece(2),
+                _listEspece(1),
+                _listEspece(3),
+                _listEspece(0),
+              ]),
+            ),
+          ],
         ),
       ),
     );

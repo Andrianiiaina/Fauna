@@ -62,8 +62,14 @@ class _AddEspeceScreenState extends State<AddEspeceScreen> {
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
-        foregroundColor: Colors.green,
+        foregroundColor: const Color.fromARGB(193, 0, 0, 0),
         title: const Text("Envoie espece"),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 12),
+            child: Icon(Icons.person),
+          )
+        ],
       ),
       body: ListView(children: [
         Container(

@@ -1,22 +1,21 @@
 import 'package:fauna_scan/animals/scan_result.dart';
 import 'package:flutter/material.dart';
-import '../classifier.dart';
+import '../models/classifier.dart';
 import 'dart:typed_data';
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import 'package:image/image.dart' as img;
 import 'package:tflite_flutter/tflite_flutter.dart';
 import '../models/database_manager.dart';
 
-class scani extends StatefulWidget {
-  const scani({Key? key}) : super(key: key);
+class ScanAnimalButton extends StatefulWidget {
+  const ScanAnimalButton({Key? key}) : super(key: key);
 
   @override
-  State<scani> createState() => _scaniState();
+  State<ScanAnimalButton> createState() => _ScanAnimalButtonState();
 }
 
-class _scaniState extends State<scani> {
+class _ScanAnimalButtonState extends State<ScanAnimalButton> {
   final labels = [
     "aye",
     "black lemur",
@@ -37,10 +36,7 @@ class _scaniState extends State<scani> {
     "tortue",
     "unica"
   ];
-  final ImagePicker _picker = ImagePicker();
   String faunaName = "";
-  String currentImage = "";
-  String imageFile = "";
   final handler = DatabaseManager();
 
   static Future<ClassifierModel> loadModel() async {
@@ -63,22 +59,12 @@ class _scaniState extends State<scani> {
     final ImagePicker _picker = ImagePicker();
     (type == 0)
         ? pickedImage = await _picker.getImage(source: ImageSource.gallery)
-        : pickedImage = await _picker.getImage(
-            source: ImageSource.camera,
-            preferredCameraDevice: CameraDevice.rear);
+        : pickedImage = await _picker.getImage(source: ImageSource.camera);
 
     if (pickedImage != null) {
       //stockage et affichage image
       File imagefile = File(pickedImage.path);
-      final appDir = await getApplicationDocumentsDirectory();
-      final imagesDir = Directory('${appDir.path}/images');
-      if (!imagesDir.existsSync()) imagesDir.createSync(recursive: true);
-      final newImagePath =
-          '${imagesDir.path}/${DateTime.now().millisecondsSinceEpoch}.jpg}';
-      setState(() {
-        currentImage = pickedImage.path;
-        imageFile = newImagePath;
-      });
+
       //traitement données
       List<int> imageB = await imagefile.readAsBytes();
       img.Image image = img.decodeImage(Uint8List.fromList(imageB))!;
@@ -123,14 +109,12 @@ class _scaniState extends State<scani> {
             MaterialPageRoute(
               builder: ((context) => ScanResultPage(
                   id: id,
-                  currentImage: currentImage,
+                  currentImage: pickedImage,
                   percentage: pourcentage.round().toString())),
             ),
           );
         });
-      } catch (e) {
-        print(e);
-      }
+      } catch (e) {}
     }
   }
 

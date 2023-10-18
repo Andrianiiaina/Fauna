@@ -12,7 +12,7 @@ class ParameterScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        foregroundColor: Colors.green,
+        foregroundColor: const Color.fromARGB(193, 0, 0, 0),
         elevation: 1,
         title: Row(
           children: [
@@ -22,6 +22,12 @@ class ParameterScreen extends StatelessWidget {
             const Text("Paramètres"),
           ],
         ),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 12),
+            child: Icon(Icons.person),
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
