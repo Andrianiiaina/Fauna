@@ -63,7 +63,7 @@ class _BibliothequePageState extends State<BibliothequePage>
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   itemCount: animals.length,
-                  crossAxisCount: 3,
+                  crossAxisCount: 2,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                   padding: const EdgeInsets.all(10),

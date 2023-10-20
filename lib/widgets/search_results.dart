@@ -11,7 +11,7 @@ class SearchAnimal extends StatefulWidget {
 
 class _SearchAnimalState extends State<SearchAnimal> {
   List<Map<String, dynamic>>? animals = [];
-  get_animals(String q) {
+  searchAnimals(String q) {
     handler.fetchAnimals().then((value) => animals = value!
         .where((element) =>
             element['nom'].toLowerCase().contains(q.toLowerCase()) ||
@@ -20,7 +20,7 @@ class _SearchAnimalState extends State<SearchAnimal> {
                 .toString()
                 .toLowerCase()
                 .contains(q.toLowerCase()) ||
-            element['genre'].toString().toLowerCase().contains(q.toLowerCase()))
+            element['genre'].toLowerCase().contains(q.toLowerCase()))
         .toList());
     return animals;
   }
@@ -56,7 +56,7 @@ class _SearchAnimalState extends State<SearchAnimal> {
                   });
                 } else {
                   setState(() {
-                    animals = get_animals(q);
+                    animals = searchAnimals(q);
                   });
                 }
               },

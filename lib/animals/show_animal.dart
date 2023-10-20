@@ -95,10 +95,13 @@ class _ShowAnimalState extends State<ShowAnimal> {
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.only(left: 30, right: 30),
+                      padding: const EdgeInsets.only(left: 15, right: 15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          //Text("à ${widget.percentage} %"),
+
+                          const SizedBox(height: 10),
                           //Text("à ${widget.percentage} %"),
                           const Text('Le saviez-vous?'),
                           Text(
@@ -112,17 +115,30 @@ class _ShowAnimalState extends State<ShowAnimal> {
                           const Text('Description'),
                           Text(
                             animal['description'],
+                            maxLines: 8,
                             style: const TextStyle(
+                                overflow: TextOverflow.ellipsis,
                                 color: Colors.grey,
                                 fontFamily: "Roboto",
-                                fontSize: 16),
+                                fontSize: 14),
                           ),
-
+                          const SizedBox(height: 10),
                           ListTile(
                             leading: const Icon(Icons.food_bank,
                                 color: Colors.brown),
                             title: Text(
                               animal['regime'],
+                              style: const TextStyle(
+                                  color: Color.fromARGB(157, 54, 45, 41),
+                                  fontSize: 14),
+                            ),
+                          ),
+
+                          ListTile(
+                            leading: const Icon(Icons.location_on,
+                                color: Colors.brown),
+                            title: Text(
+                              animal['zones'],
                               style: const TextStyle(
                                   color: Color.fromARGB(157, 54, 45, 41),
                                   fontSize: 14),
@@ -139,16 +155,15 @@ class _ShowAnimalState extends State<ShowAnimal> {
                             ),
                           ),
                           ListTile(
-                            leading: const Icon(Icons.home_filled,
+                            leading: const Icon(Icons.group_work,
                                 color: Colors.brown),
                             title: Text(
-                              animal['zones'],
+                              animal['famille'],
                               style: const TextStyle(
                                   color: Color.fromARGB(157, 54, 45, 41),
                                   fontSize: 14),
                             ),
                           ),
-                          const SizedBox(height: 10),
                           /**
                          *   Text('Image similaire:'),
                           Image(

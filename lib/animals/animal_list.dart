@@ -63,7 +63,7 @@ class _ListAnimalState extends State<ListAnimal> {
         child: Column(
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height - 170,
+              height: MediaQuery.of(context).size.height - 110,
               child: SingleChildScrollView(
                 child: MasonryGridView.count(
                   controller: ScrollController(),

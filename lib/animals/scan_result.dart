@@ -61,7 +61,7 @@ class _ScanResultPageState extends State<ScanResultPage> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: MediaQuery.of(context).size.height / 2.2,
+                      height: MediaQuery.of(context).size.height / 2.1,
                       child: Stack(
                         children: [
                           SizedBox(
@@ -72,7 +72,7 @@ class _ScanResultPageState extends State<ScanResultPage> {
                                       File(widget.currentImage.path),
                                       height: 150,
                                       width: 150,
-                                      fit: BoxFit.contain,
+                                      fit: BoxFit.cover,
                                     )
                                   : const Text(
                                       "un problème lors du chargement de l'image")),
@@ -128,7 +128,7 @@ class _ScanResultPageState extends State<ScanResultPage> {
                           const Text('Meilleure correspondance:'),
                           SizedBox(
                             width: 800,
-                            height: 100,
+                            height: 150,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               shrinkWrap: true,
@@ -138,8 +138,8 @@ class _ScanResultPageState extends State<ScanResultPage> {
                                     Animal.getLink(animal['image'])[index];
                                 return Image(
                                   image: AssetImage(image),
-                                  height: 100,
-                                  width: 100,
+                                  height: 120,
+                                  width: 150,
                                 );
                               }),
                             ),
@@ -158,16 +158,30 @@ class _ScanResultPageState extends State<ScanResultPage> {
                           const Text('Description'),
                           Text(
                             animal['description'],
+                            maxLines: 8,
                             style: const TextStyle(
+                                overflow: TextOverflow.ellipsis,
                                 color: Colors.grey,
                                 fontFamily: "Roboto",
-                                fontSize: 16),
+                                fontSize: 14),
                           ),
+                          const SizedBox(height: 10),
                           ListTile(
                             leading: const Icon(Icons.food_bank,
                                 color: Colors.brown),
                             title: Text(
                               animal['regime'],
+                              style: const TextStyle(
+                                  color: Color.fromARGB(157, 54, 45, 41),
+                                  fontSize: 14),
+                            ),
+                          ),
+
+                          ListTile(
+                            leading: const Icon(Icons.location_on,
+                                color: Colors.brown),
+                            title: Text(
+                              animal['zones'],
                               style: const TextStyle(
                                   color: Color.fromARGB(157, 54, 45, 41),
                                   fontSize: 14),
@@ -184,16 +198,15 @@ class _ScanResultPageState extends State<ScanResultPage> {
                             ),
                           ),
                           ListTile(
-                            leading: const Icon(Icons.location_on,
+                            leading: const Icon(Icons.group_work,
                                 color: Colors.brown),
                             title: Text(
-                              animal['zones'],
+                              animal['famille'],
                               style: const TextStyle(
                                   color: Color.fromARGB(157, 54, 45, 41),
                                   fontSize: 14),
                             ),
                           ),
-                          const SizedBox(height: 10),
                           /**
                          *   Text('Image similaire:'),
                           Image(
@@ -202,7 +215,8 @@ class _ScanResultPageState extends State<ScanResultPage> {
                           ),
                          */
                           Container(
-                            height: 100,
+                            height: 50,
+                            margin: const EdgeInsets.only(bottom: 50, top: 20),
                             child: ElevatedButton(
                               onPressed: () {
                                 addToBiblio(animal['nom']);
@@ -231,8 +245,8 @@ class _ScanResultPageState extends State<ScanResultPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                      "Desolé fauna-scan pas reconnu l'animal que vous avez scanné, essayer de prendre une autre photo ou rapportez l'animal non reconnu à l'admisistrateur."),
+                  Text(
+                      "${widget.id}é fauna-scan pas reconnu l'animal que vous avez scanné, essayer de prendre une autre photo ou rapportez l'animal non reconnu à l'admisistrateur."),
                   ElevatedButton(
                       onPressed: () {
                         context.go('/add_espece');
