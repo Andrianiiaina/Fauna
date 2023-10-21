@@ -37,8 +37,10 @@ class _ScanResultPageState extends State<ScanResultPage> {
     }
     await handler.insertBibliotheque(Bibliotheque(
         nomAnimal: nom,
+        date: DateTime.now().toUtc().toString(),
+        idAnimal: widget.id,
         imageAnimal: newImagePath,
-        descriptionAnimal: "on verra"));
+        descriptionAnimal: "Aucune description"));
   }
 
   @override
@@ -103,7 +105,7 @@ class _ScanResultPageState extends State<ScanResultPage> {
                                           ),
                                           //Colors.green,
                                           subtitle: Text(
-                                            "${animal['genre']} ${animal['espece']}",
+                                            "${animal['espece']}",
                                             style: const TextStyle(
                                                 color: Colors.green,
                                                 fontSize: 16,
@@ -246,7 +248,9 @@ class _ScanResultPageState extends State<ScanResultPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                      "${widget.id}é fauna-scan pas reconnu l'animal que vous avez scanné, essayer de prendre une autre photo ou rapportez l'animal non reconnu à l'admisistrateur."),
+                    "Désolé! Fauna-scan n'a pas reconnu l'animal que vous avez scanné, essayer de prendre une autre photo ou rapportez l'animal non reconnu à l'admisistrateur.",
+                    style: TextStyle(fontSize: 18),
+                  ),
                   ElevatedButton(
                       onPressed: () {
                         context.go('/add_espece');

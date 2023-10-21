@@ -4,7 +4,7 @@ import 'animals/animal_page.dart';
 import 'widgets/floatting_button.dart';
 import 'parameters/parameter.dart';
 import 'routers.dart';
-import 'animals/add_espece_screen.dart';
+import 'animals/repot_animal.dart';
 import 'bibliotheque_page.dart';
 
 void main() async {
@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Fauna-scan',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.brown),
+      theme: ThemeData(primarySwatch: Colors.green),
+      // theme: ThemeData.dark(),
       routerDelegate: routes.routerDelegate,
       routeInformationParser: routes.routeInformationParser,
     );

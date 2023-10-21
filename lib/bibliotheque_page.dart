@@ -1,3 +1,4 @@
+import 'package:fauna_scan/animals/show_animal.dart';
 import 'package:fauna_scan/models/bibliotheque.dart';
 import 'package:flutter/material.dart';
 import '../models/database_manager.dart';
@@ -14,6 +15,7 @@ class BibliothequePage extends StatefulWidget {
 class _BibliothequePageState extends State<BibliothequePage>
     with TickerProviderStateMixin {
   List<Bibliotheque> animals = [];
+  List<Map<String, Bibliotheque>> anims = [];
   final handler = DatabaseManager();
   @override
   void initState() {
@@ -25,6 +27,7 @@ class _BibliothequePageState extends State<BibliothequePage>
     handler.getBiblioAnimals().then((value) {
       setState(() {
         animals = value;
+        // animals.sort((a, b) => a.date.compareTo(b.date));
       });
     });
   }
@@ -69,6 +72,15 @@ class _BibliothequePageState extends State<BibliothequePage>
                   padding: const EdgeInsets.all(10),
                   itemBuilder: (context, index) {
                     return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: ((context) =>
+                                  ShowAnimal(id: animals[index].idAnimal)),
+                            ),
+                          );
+                        },
                         onLongPress: () {
                           showDialog(
                               context: context,

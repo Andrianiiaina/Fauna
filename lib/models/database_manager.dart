@@ -4,7 +4,7 @@ import 'animal.dart';
 import 'user.dart';
 
 class DatabaseManager {
-  final pathDB = 'faux1.db';
+  final pathDB = 'p63.db';
   initializeDB() async {
     return openDatabase(pathDB, version: 1,
         onCreate: (database, version) async {
@@ -13,7 +13,7 @@ class DatabaseManager {
       //await database.execute(
       //   ''' CREATE TABLE genre(idGenre INTEGER PRIMARY KEY  AUTOINCREMENT, nomGenre TEXT,descriptionGenre TEXT)''');
       await database.execute(
-          ''' CREATE TABLE bibliotheque(idBiblio INTEGER PRIMARY KEY  AUTOINCREMENT, nomAnimal TEXT, imageAnimal TEXT,descriptionAnimal TEXT)''');
+          ''' CREATE TABLE bibliotheque(idBiblio INTEGER PRIMARY KEY  AUTOINCREMENT, nomAnimal TEXT, imageAnimal TEXT,descriptionAnimal TEXT,date TEXT DEFAULT_TIMESTAMP,idAnimal INTEGER)''');
       await database.execute(
           ''' CREATE TABLE animal(id INTEGER PRIMARY KEY AUTOINCREMENT, nom TEXT,regime TEXT, estVertebre INTEGER, image TEXT,zones TEXT,description TEXT,classe INTEGER, genre TEXT,espece TEXT,info TEXT, famille TEXT)''');
       await database.execute(

@@ -79,7 +79,7 @@ class _ShowAnimalState extends State<ShowAnimal> {
                                           ),
                                           //Colors.green,
                                           subtitle: Text(
-                                            "${animal['genre']} ${animal['espece']}",
+                                            "${animal['espece']}",
                                             style: const TextStyle(
                                                 color: Colors.green,
                                                 fontSize: 16,

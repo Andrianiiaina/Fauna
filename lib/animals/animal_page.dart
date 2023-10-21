@@ -33,7 +33,6 @@ class _AnimalPageState extends State<AnimalPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Icon(Icons.menu),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         elevation: 0,
@@ -44,6 +43,7 @@ class _AnimalPageState extends State<AnimalPage> with TickerProviderStateMixin {
           )
         ],
       ),
+      drawer: MenuDrawer(),
       body: Container(
         height: MediaQuery.of(context).size.height,
         padding: const EdgeInsets.only(left: 15, right: 15),
@@ -71,8 +71,8 @@ class _AnimalPageState extends State<AnimalPage> with TickerProviderStateMixin {
               tabs: const [
                 Tab(child: Text('Mammifère')),
                 Tab(child: Text('Réptiles')),
-                Tab(child: Text('Insectes')),
                 Tab(child: Text('Oiseaux')),
+                Tab(child: Text('Insectes')),
               ],
             ),
             const SizedBox(height: 10),
@@ -121,5 +121,46 @@ class _AnimalPageState extends State<AnimalPage> with TickerProviderStateMixin {
           }
           return CardAnimal(animal: extraitClasses[index]);
         });
+  }
+}
+
+class MenuDrawer extends StatelessWidget {
+  const MenuDrawer({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width / 1.5,
+      child: Column(
+        children: [
+          Image(image: AssetImage('assets/oiseaux/mesite_varie.jpg')),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text("Accueil"),
+            onTap: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.star),
+            title: Text("Nous noter"),
+            onTap: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Vous etes hors connexion')));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.share),
+            title: Text("Partager l'application"),
+            onTap: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Vous etes hors connexion')));
+            },
+          ),
+        ],
+      ),
+    );
   }
 }

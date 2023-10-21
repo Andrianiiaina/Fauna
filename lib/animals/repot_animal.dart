@@ -63,7 +63,7 @@ class _AddEspeceScreenState extends State<AddEspeceScreen> {
         elevation: 1,
         backgroundColor: Colors.white,
         foregroundColor: const Color.fromARGB(193, 0, 0, 0),
-        title: const Text("Envoie espece"),
+        title: const Text("Rapporter un espece"),
         actions: const [
           Padding(
             padding: EdgeInsets.only(right: 12),
@@ -111,31 +111,7 @@ class _AddEspeceScreenState extends State<AddEspeceScreen> {
                       controller: regimeController,
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 10),
-                    child: TextFormField(
-                      decoration: const InputDecoration(
-                          labelText: "Régime alimentaire (*)",
-                          hintText: "Ex: carnivore, herbivore, ...",
-                          border: OutlineInputBorder()),
-                      controller: regimeController,
-                    ),
-                  ),
                   isVerteberRadio(),
-                  Container(
-                    margin: const EdgeInsets.only(top: 10, bottom: 10),
-                    child: DropdownButtonFormField(
-                      decoration: InputDecoration(
-                        hintText: "Espèce",
-                        hintStyle: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey[700],
-                        ),
-                      ),
-                      items: especeDrop,
-                      onChanged: (value) {},
-                    ),
-                  ),
                   Container(
                     margin: const EdgeInsets.only(top: 10, bottom: 10),
                     child: DropdownButtonFormField(
@@ -225,7 +201,7 @@ class _AddEspeceScreenState extends State<AddEspeceScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Est vertebré",
+            "L'avez vous déja vu quelque part?",
             style: TextStyle(
               fontSize: 16,
               color: Colors.grey[700],
