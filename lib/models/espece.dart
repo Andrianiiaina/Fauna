@@ -16,7 +16,7 @@ class Espece {
       'descriptionEsp': descriptionEsp,
     };
   }
-
+#populate data avec des données sur gpt//à supprimer later
   static List<Espece> especes = [
     Espece(
         nomEsp: "Furcifer pardalis",
