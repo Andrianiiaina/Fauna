@@ -62,7 +62,7 @@ class Animal {
       'info': info,
     };
   }
-
+//pppulate data avec des données sur chatgpt. A supprimer laterrr
   static List<Animal> listOfAnimals = [
     Animal(
       nom: "Sifaka de Coquerel",
